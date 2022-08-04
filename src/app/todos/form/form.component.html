@@ -1,4 +1,8 @@
-<form>
-    <input type="text">
-    <button>Submit</button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="text" formControlName="todo">
+        <small *ngIf="todo.invalid">Name is too short</small>
+    </div>
+    <button type="submit">Submit</button>
 </form>
+Typed Todo: {{todo.value}}

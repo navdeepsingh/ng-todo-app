@@ -4,16 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TodosService {
-  todos;
+  todos:{name: string}[];
+  
   constructor() {
-    this.todos = ['Todo1','Todo2','Todo3']
+    this.todos = [{name: "Todo1"},{name: "Todo2"}]
   }
 
   getTodos() {
     return this.todos;
   }
 
-  // addTodo(todo) {
-  //   return this.todos.push(todo)
-  // }
+  addTodo(todo: any) {
+    return this.todos.push(todo)
+  }
 }

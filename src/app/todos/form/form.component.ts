@@ -9,10 +9,10 @@ import {TodosService} from "../todos.service"
 })
 
 export class FormComponent {
-    todoService;
-    constructor() {
-        this.todoService =  new TodosService()
-    }
+    // todoService;
+    // constructor() {
+    //     this.todoService =  new TodosService()
+    // }
 
     form = new FormGroup({
         todo: new FormControl('', Validators.minLength(2))
@@ -22,12 +22,12 @@ export class FormComponent {
         return this.form.get('todo')
     }
 
-    onSubmit(): void {
-        console.log(this.form.value.todo)
-        const newTodo = this.form.value.todo;
-        this.todoService.addTodo({name: newTodo})
-        console.log(this.todoService.getTodos())
-    }
+    // onSubmit(): void {
+    //     console.log(this.form.value.todo)
+    //     const newTodo = this.form.value.todo;
+    //     this.todoService.addTodo({name: newTodo})
+    //     console.log(this.todoService.getTodos())
+    // }
 
     addTodoControl = new FormControl('');
 

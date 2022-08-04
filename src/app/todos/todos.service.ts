@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+type Todo = {
+  name: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class TodosService {
-  todos:{name: string}[];
+  fakeData = [{name: "Todo1"},{name: "Todo2"}]
+
+  constructor(
+    private http: HttpClient
+  ) {}
   
-  constructor() {
-    this.todos = [{name: "Todo1"},{name: "Todo2"}]
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('/');
   }
 
-  getTodos() {
-    return this.todos;
-  }
-
-  addTodo(todo: any) {
-    return this.todos.push(todo)
-  }
+  // addTodo(todo: any) {
+  //   return this.todos.push(todo)
+  // }
 }

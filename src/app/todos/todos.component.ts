@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from './todos.service';
 
+type Todo = {
+  name: string
+}
+
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -8,14 +12,14 @@ import { TodosService } from './todos.service';
   providers: [TodosService]
 })
 export class TodosComponent implements OnInit {
-  todos;
+  todos: Todo[] = [];
   
-  constructor() {
-    let service = new TodosService();
-    this.todos = service.getTodos();
-  }
+  constructor(
+    private todosService: TodosService
+  ) {}
 
   ngOnInit(): void {
+    this.todosService.getTodos().subscribe(todos => this.todos =  todos)
   }
 
 }
